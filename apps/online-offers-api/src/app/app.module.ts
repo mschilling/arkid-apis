@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { OffersModule } from './offers/offers.module';
-import { Aanbieding } from './offers/aanbieding.entity';
+import { Offer } from './offers/offer.entity';
 import { environment } from '../environments/environment';
 
 @Module({
@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
       username: environment.dbUser,
       password: environment.dbPwd,
       database: environment.dbName,
-      entities: [Aanbieding],
+      entities: [Offer],
       synchronize: false,
       options: {
         encrypt: false

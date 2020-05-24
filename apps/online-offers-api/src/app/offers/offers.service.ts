@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Aanbieding } from './aanbieding.entity';
+import { Offer } from './offer.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class OffersService {
   constructor(
-    @InjectRepository(Aanbieding)
-    private offersRepository: Repository<Aanbieding>,
+    @InjectRepository(Offer)
+    private offersRepository: Repository<Offer>,
   ) {}
 
-  async getAll(): Promise<Aanbieding[]> {
-    return this.offersRepository.find({ take: 5 });
+  async getAll(): Promise<Offer[]> {
+    return this.offersRepository.find({ order: { Id: 'DESC' }, take: 5 });
   }
 }

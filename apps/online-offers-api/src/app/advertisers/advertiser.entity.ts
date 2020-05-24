@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import { Offer } from '../offers/offer.entity';
 
 @Entity('Aanbieder')
 export class Advertiser {
@@ -23,4 +24,5 @@ export class Advertiser {
   @Column({ name: 'Rating' })
   rating: number;
 
+  offers: Offer[]; // FK_rel
 }

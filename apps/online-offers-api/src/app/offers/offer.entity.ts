@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Timestamp, ManyToOne, JoinColumn } from 'typeorm';
+import { Advertiser } from '../advertisers/advertiser.entity';
 
 @Entity('Aanbieding')
 export class Offer {
@@ -32,20 +33,7 @@ export class Offer {
   @Column({ name: 'DateToegevoegd', type: 'datetime' })
   creationdate: Timestamp;
 
-  // @ManyToOne(type => User, user => user.photos)
+  @ManyToOne((type) => Advertiser, (advertiser) => advertiser.offers)
+  @JoinColumn({ name: 'AanbiederId' })
+  advertiser: Advertiser;
 }
-
-// @Expose() readonly productId: string;
-// @Expose() readonly displayPrice: string;
-// @Expose() readonly rppPrice: number;
-// @Expose() readonly deliveryCost: number;
-// @Expose() readonly deliveryTime: string;
-// @Expose() readonly currency: string;
-// @Expose() readonly datafeedId: string;
-// @Expose() readonly merchantId: string;
-// @Expose() readonly merchantName: string;
-// @Expose() readonly merchantCategory: string;
-// @Expose() readonly imageUrlLarge: string;
-// @Expose() readonly validFrom: string;
-// @Expose() readonly validTo: string;
-// @Expose() readonly affiliateNetwork: string;

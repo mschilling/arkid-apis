@@ -20,6 +20,8 @@ import { Offer } from './offers/offer.entity';
       options: {
         encrypt: false,
       },
+
+      logging: true
     }),
     OffersModule,
     AdvertisersModule,

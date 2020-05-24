@@ -54,6 +54,60 @@
           }
         }
       }
+    },
+    "gespot-zwolle-api": {
+      "root": "apps/gespot-zwolle-api",
+      "sourceRoot": "apps/gespot-zwolle-api/src",
+      "projectType": "application",
+      "prefix": "gespot-zwolle-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/gespot-zwolle-api",
+            "main": "apps/gespot-zwolle-api/src/main.ts",
+            "tsConfig": "apps/gespot-zwolle-api/tsconfig.app.json",
+            "assets": ["apps/gespot-zwolle-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/gespot-zwolle-api/src/environments/environment.ts",
+                  "with": "apps/gespot-zwolle-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "gespot-zwolle-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/gespot-zwolle-api/.eslintrc",
+            "tsConfig": ["apps/gespot-zwolle-api/tsconfig.app.json", "apps/gespot-zwolle-api/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/gespot-zwolle-api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/gespot-zwolle-api/jest.config.js",
+            "tsConfig": "apps/gespot-zwolle-api/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -1,4 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { PhotosService } from './photos.service';
 
 @Controller('photos')
-export class PhotosController {}
+export class PhotosController {
+  constructor(private readonly photosService: PhotosService) {}
+
+  @Get()
+  getAll() {
+    return this.photosService.getAll();
+  }
+}

@@ -1,8 +1,63 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "online-offers-api": {
+      "root": "apps/online-offers-api",
+      "sourceRoot": "apps/online-offers-api/src",
+      "projectType": "application",
+      "prefix": "online-offers-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/online-offers-api",
+            "main": "apps/online-offers-api/src/main.ts",
+            "tsConfig": "apps/online-offers-api/tsconfig.app.json",
+            "assets": ["apps/online-offers-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/online-offers-api/src/environments/environment.ts",
+                  "with": "apps/online-offers-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "online-offers-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/online-offers-api/.eslintrc",
+            "tsConfig": ["apps/online-offers-api/tsconfig.app.json", "apps/online-offers-api/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/online-offers-api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/online-offers-api/jest.config.js",
+            "tsConfig": "apps/online-offers-api/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/nest"
   },
   "schematics": {
     "@nrwl/workspace": {
@@ -62,5 +117,6 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "defaultProject": "online-offers-api"
 }

@@ -31,6 +31,8 @@ export class Offer {
 
   @Column({ name: 'DateToegevoegd', type: 'datetime' })
   creationdate: Timestamp;
+
+  // @ManyToOne(type => User, user => user.photos)
 }
 
 // @Expose() readonly productId: string;

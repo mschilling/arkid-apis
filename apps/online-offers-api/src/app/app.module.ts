@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
-import { OffersModule } from './offers/offers.module';
-import { Offer } from './offers/offer.entity';
 import { environment } from '../environments/environment';
+import { OffersModule } from './offers/offers.module';
 import { AdvertisersModule } from './advertisers/advertisers.module';
+import { Advertiser } from './advertisers/advertiser.entity';
+import { Offer } from './offers/offer.entity';
 
 @Module({
   imports: [
@@ -15,16 +15,16 @@ import { AdvertisersModule } from './advertisers/advertisers.module';
       username: environment.dbUser,
       password: environment.dbPwd,
       database: environment.dbName,
-      entities: [Offer],
+      entities: [Offer, Advertiser],
       synchronize: false,
       options: {
-        encrypt: false
-      }
+        encrypt: false,
+      },
     }),
     OffersModule,
     AdvertisersModule,
   ],
   controllers: [],
-  providers: [OffersModule],
+  providers: [OffersModule, AdvertisersModule],
 })
 export class AppModule {}

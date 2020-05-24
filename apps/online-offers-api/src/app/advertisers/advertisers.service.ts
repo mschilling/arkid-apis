@@ -11,6 +11,7 @@ export class AdvertisersService {
   ) {}
 
   async getAll(): Promise<Advertiser[]> {
-    return this.advertisersRepository.find({ order: { id: 'DESC' }, take: 5 });
+    const MAX_RESULTS = 100;
+    return this.advertisersRepository.find({ order: { id: 'DESC' }, take: MAX_RESULTS });
   }
 }

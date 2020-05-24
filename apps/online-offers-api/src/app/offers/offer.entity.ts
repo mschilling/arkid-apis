@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
 
 @Entity('Aanbieding')
 export class Offer {
@@ -23,8 +23,15 @@ export class Offer {
   @Column({ name: 'AfbeeldingUrlExtern' })
   readonly imageUrl: string;
 
-}
+  @Column({ name: 'AanbiedingVan', type: 'datetime', nullable: true })
+  readonly validFrom?: Timestamp;
 
+  @Column({ name: 'AanbiedingTot', type: 'datetime', nullable: true })
+  readonly validTo?: Timestamp;
+
+  @Column({ name: 'DateToegevoegd', type: 'datetime' })
+  readonly creationdate: Timestamp;
+}
 
 // @Expose() readonly productId: string;
 // @Expose() readonly displayPrice: string;

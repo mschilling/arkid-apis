@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { OffersModule } from './offers/offers.module';
 import { Offer } from './offers/offer.entity';
 import { environment } from '../environments/environment';
+import { AdvertisersModule } from './advertisers/advertisers.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { environment } from '../environments/environment';
       }
     }),
     OffersModule,
+    AdvertisersModule,
   ],
   controllers: [],
   providers: [OffersModule],

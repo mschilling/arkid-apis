@@ -1,11 +1,32 @@
 import { Module } from '@nestjs/common';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { environment } from '../environments/environment';
+import { OffersModule } from './offers/offers.module';
+import { AdvertisersModule } from './advertisers/advertisers.module';
+import { Advertiser } from './advertisers/advertiser.entity';
+import { Offer } from './offers/offer.entity';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mssql',
+      host: environment.dbHost,
+      port: environment.dbPort,
+      username: environment.dbUser,
+      password: environment.dbPwd,
+      database: environment.dbName,
+      entities: [Offer, Advertiser],
+      synchronize: false,
+      options: {
+        encrypt: false,
+      },
+
+      logging: true
+    }),
+    OffersModule,
+    AdvertisersModule,
+  ],
+  controllers: [],
+  providers: [OffersModule, AdvertisersModule],
 })
 export class AppModule {}

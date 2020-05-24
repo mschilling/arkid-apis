@@ -32,7 +32,7 @@ nx g @nrwl/nest:class advertisers/advertiser --sourceRoot=apps/online-offers-api
 nx g @nrwl/nest:app gespot-zwolle-api --dry-run
 ```
 
-### Module Offers
+### Module Photos
 ```
 nx g @nrwl/nest:module photos --sourceRoot=apps/gespot-zwolle-api/src --path=app --dry-run
 nx g @nrwl/nest:controller photos --sourceRoot=apps/gespot-zwolle-api/src --spec=0 --path=app --dry-run

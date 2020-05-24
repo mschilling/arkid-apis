@@ -2,35 +2,35 @@ import { Entity, Column, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
 
 @Entity('Aanbieding')
 export class Offer {
-  @PrimaryGeneratedColumn()
-  Id: number;
+  @PrimaryGeneratedColumn({ name: 'Id' })
+  id: number;
 
   @Column({ name: 'Titel' })
-  Title: string;
+  title: string;
 
   @Column({ name: 'Omschrijving' })
-  Description: string;
+  description: string;
 
   @Column({ name: 'ProductPrijsVoor' })
-  readonly price: number;
+  price: number;
 
   @Column({ name: 'ProductPrijsVan' })
-  readonly fromPrice: number;
+  fromPrice: number;
 
   @Column({ name: 'ProductURLExtern' })
-  readonly deepLink: string;
+  deepLink: string;
 
   @Column({ name: 'AfbeeldingUrlExtern' })
-  readonly imageUrl: string;
+  imageUrl: string;
 
   @Column({ name: 'AanbiedingVan', type: 'datetime', nullable: true })
-  readonly validFrom?: Timestamp;
+  validFrom?: Timestamp;
 
   @Column({ name: 'AanbiedingTot', type: 'datetime', nullable: true })
-  readonly validTo?: Timestamp;
+  validTo?: Timestamp;
 
   @Column({ name: 'DateToegevoegd', type: 'datetime' })
-  readonly creationdate: Timestamp;
+  creationdate: Timestamp;
 }
 
 // @Expose() readonly productId: string;

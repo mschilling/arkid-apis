@@ -11,6 +11,6 @@ export class OffersService {
   ) {}
 
   async getAll(): Promise<Offer[]> {
-    return this.offersRepository.find({ order: { Id: 'DESC' }, take: 5 });
+    return this.offersRepository.find({ order: { id: 'DESC' }, take: 5 });
   }
 }

@@ -68,7 +68,8 @@
             "outputPath": "dist/apps/gespot-zwolle-api",
             "main": "apps/gespot-zwolle-api/src/main.ts",
             "tsConfig": "apps/gespot-zwolle-api/tsconfig.app.json",
-            "assets": ["apps/gespot-zwolle-api/src/assets"]
+            "assets": ["apps/gespot-zwolle-api/src/assets"],
+            "webpackConfig": "./webpack-gespot-zwolle-api.config.js"
           },
           "configurations": {
             "production": {
@@ -124,6 +125,27 @@
             "jestConfig": "apps/gespot-zwolle-api/jest.config.js",
             "tsConfig": "apps/gespot-zwolle-api/tsconfig.spec.json",
             "passWithNoTests": true
+          }
+        },
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "cwd": "dist/apps/gespot-zwolle-api",
+            "parallel": false,
+            "commands": [
+              {
+                "command": "cp ../../../apps/gespot-zwolle-api/server/Dockerfile ."
+              },
+              {
+                "command": "./../../../tools/scripts/prepare-deploy.sh"
+              },
+              {
+                "command": "./../../../tools/scripts/deploy.sh"
+              },
+              {
+                "command": "echo \"firebase deploy --only hosting:web:{args.environment}\""
+              }
+            ]
           }
         }
       }

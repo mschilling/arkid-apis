@@ -59,6 +59,7 @@ function copyPackageLockFile(outputPath) {
 function generatePackageJson() {
   const implicitDeps = [
     '@nestjs/platform-express',
+    // 'class-transformer',
     // 'apollo-server-express',
     // 'graphql',
     // 'graphql-tools',

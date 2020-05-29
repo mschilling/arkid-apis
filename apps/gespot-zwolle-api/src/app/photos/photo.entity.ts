@@ -5,7 +5,7 @@ export class Photo {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
-  // @Column({ name: 'Naam' })
-  // name: string;
+  @Column({ name: 'date_added' })
+  creationDate: string;
 
 }

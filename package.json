@@ -28,7 +28,7 @@
   "private": true,
   "dependencies": {
     "@nestjs/common": "^6.8.3",
-    "@nestjs/core": "^6.8.3",
+    "@nestjs/core": "^11.1.18",
     "@nestjs/platform-express": "^6.8.3",
     "@nestjs/typeorm": "^7.0.0",
     "mssql": "^6.2.0",
